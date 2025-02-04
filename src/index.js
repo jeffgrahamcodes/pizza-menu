@@ -60,25 +60,22 @@ function App() {
 }
 
 function Header() {
-  // const style = {
-  //   color: 'red',
-  //   fontSize: '48px',
-  //   textTransform: 'uppercase',
-  // };
-
   return (
     <header className="header">
       <h1>Fast React Pizza Co.</h1>
     </header>
   );
 }
+
 function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {pizzaData.map((pizza, index) => {
-        return <Pizza key={index} pizza={pizza} />;
-      })}
+      <ul className="pizzas">
+        {pizzaData.map((pizza, index) => (
+          <Pizza key={index} pizza={pizza} />
+        ))}
+      </ul>
     </main>
   );
 }
@@ -88,13 +85,6 @@ function Footer() {
   const openHour = 12;
   const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
-  console.log(isOpen);
-
-  // if (hour >= openHour && hour <= closeHour) {
-  //   alert("We're currently open!");
-  // } else {
-  //   alert("Sorry we're closed");
-  // }
 
   return (
     <footer className="footer">
@@ -105,14 +95,14 @@ function Footer() {
 
 function Pizza({ pizza }) {
   return (
-    <div className="pizza">
+    <li className="pizza">
       <img src={pizza.photoName} alt={pizza.name} />
       <div>
         <h3>{pizza.name}</h3>
         <p>{pizza.ingredients}</p>
         <span>{pizza.price}</span>
       </div>
-    </div>
+    </li>
   );
 }
 
